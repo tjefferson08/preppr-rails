@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :recipes
-  post :import, to: "import#import"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  get '/import/new', to: "import#new"
+  post '/import', to: "import#import"
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "recipes#index"
 end

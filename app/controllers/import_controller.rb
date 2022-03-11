@@ -1,10 +1,13 @@
 class ImportController < ApplicationController
-  def import
-    ImportRecipe.new(params[:url]).run
+  def new
+  end
 
-    # TODO: html... redirect?
+  def import
+    hsh = ImportRecipe.new(params[:url]).to_h
+
     respond_to do |format|
       format.json { render json: {message: "Import success"}, status: :created }
+      format.html { redirect_to new_recipe_path(recipe: hsh) }
     end
   end
 end
