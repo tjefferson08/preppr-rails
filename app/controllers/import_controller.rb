@@ -4,7 +4,7 @@ class ImportController < ApplicationController
 
     # TODO: html... redirect?
     respond_to do |format|
-      format.json { render json: { message: "Import success" }, status: :created }
+      format.json { render json: {message: "Import success"}, status: :created }
     end
   end
 end
