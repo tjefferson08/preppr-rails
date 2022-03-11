@@ -138,6 +138,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-mini-profiler (3.0.0)
+      rack (>= 1.2.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.2.3)
@@ -218,9 +220,6 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
-    view_component (2.49.1)
-      activesupport (>= 5.0.0, < 8.0)
-      method_source (~> 1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -245,7 +244,9 @@ DEPENDENCIES
   capybara
   debug
   importmap-rails
+  nokogiri (~> 1.13)
   puma (~> 5.0)
+  rack-mini-profiler
   rails (~> 7.0.2, >= 7.0.2.2)
   selenium-webdriver
   sprockets-rails
@@ -255,7 +256,6 @@ DEPENDENCIES
   tailwindcss-rails
   turbo-rails
   tzinfo-data
-  view_component (~> 2.49)
   web-console
   webdrivers
 
