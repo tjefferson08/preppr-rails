@@ -3,7 +3,7 @@ class ImportController < ApplicationController
   end
 
   def import
-    hsh = ImportRecipe.new(params[:url]).to_h
+    hsh = ImportedRecipe.new(params[:url]).to_h
 
     respond_to do |format|
       format.json { render json: {message: "Import success"}, status: :created }

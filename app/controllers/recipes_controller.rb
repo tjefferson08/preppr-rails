@@ -74,6 +74,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_attrs
-    [:name, :description, :instructions, :image_url]
+    [:description, :image_url, :name, {ingredient_list: [], instructions: []}]
   end
 end
