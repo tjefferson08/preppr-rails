@@ -1,3 +1,5 @@
+require "net/http"
+
 class ImportedRecipe
   def initialize(url)
     @url = url
