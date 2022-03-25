@@ -14,7 +14,8 @@ class ImportedRecipe
       name: data["name"],
       image_url: data["image"],
       # TODO: serialized field
-      instructions: Array.wrap(data["recipeInstructions"]).map { |i| i["text"] }.join("\n")
+      instructions: Array.wrap(data["recipeInstructions"]).map { |i| i["text"] },
+      ingredient_list: Array.wrap(data["recipeIngredient"])
     }
   end
 end

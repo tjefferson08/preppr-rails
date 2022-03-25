@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
-  instructions: MyText
-  image_url: MyString
-
-two:
-  name: MyString
-  description: MyString
-  instructions: MyText
-  image_url: MyString
+beans_and_rice:
+  name: Beans and Rice
+  description: null
+  instructions:
+    - Make Beans
+    - Make Rice
+    - Enjoy
+  ingredient_list:
+    - 1 lb beans
+    - 3 cups rice
+  image_url: https://images.com/bnznrc
