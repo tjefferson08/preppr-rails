@@ -10,9 +10,8 @@ class ApplicationController < ActionController::Base
   def current_account
     @current_account ||=
       begin
-        Rails.logger.info request.env.inspect
         return Account.new(key: "#{Rails.env}-#{request.host}") unless Rails.env.production?
-        Account.new(key: request.get_header("Cf-Access-Authenticated-User-Email"))
+        Account.new(key: request.headers["Cf-Access-Authenticated-User-Email"])
       end
   end
 
