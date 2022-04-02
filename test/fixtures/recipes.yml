@@ -11,3 +11,16 @@ beans_and_rice:
     - 1 lb beans
     - 3 cups rice
   image_url: https://images.com/bnznrc
+
+grilled_cheese:
+  name: Grilled Cheese
+  description: null
+  instructions:
+    - Butter pan
+    - Fry bread
+    - Melt cheese
+    - Flip
+  ingredient_list:
+    - Bread
+    - Cheese
+  image_url: https://images.com/grlchz

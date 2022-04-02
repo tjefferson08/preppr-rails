@@ -1,0 +1,33 @@
+<div class="p-8">
+  <%= form_with(method: "GET", class: "contents") do |form| %>
+    <%= form.label :recipe_search, "Recipe search:" %>
+    <%= form.text_field :recipe_search, value: params[:recipe_search] %>
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", value: "Search" %>
+  <% end %>
+</div>
+
+<%= form_with(model: meal_plan, class: "contents") do |form| %>
+  <% if meal_plan.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(meal_plan.errors.count, "error") %> prohibited this meal_plan from being saved:</h2>
+
+      <ul>
+        <% meal_plan.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="inline">
+    <ul>
+      <% @recipes.each do |recipe| %>
+        <li>
+          <%= form.check_box :recipe_ids, {multiple: true}, recipe.id, nil %>
+          <%= form.label :recipe_ids, recipe.name, value: recipe.id %>
+        </li>
+      <% end %>
+    </ul>
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
