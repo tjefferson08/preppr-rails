@@ -1,5 +1,5 @@
 class MealPlansController < ApplicationController
-  before_action :set_meal_plan, only: %i[ show edit update destroy ]
+  before_action :set_meal_plan, only: %i[show edit update destroy]
 
   # GET /meal_plans
   def index
@@ -47,13 +47,14 @@ class MealPlansController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meal_plan
-      @meal_plan = MealPlan.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def meal_plan_params
-      params.fetch(:meal_plan, {}).permit(recipe_ids: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_meal_plan
+    @meal_plan = MealPlan.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def meal_plan_params
+    params.fetch(:meal_plan, {}).permit(recipe_ids: [])
+  end
 end

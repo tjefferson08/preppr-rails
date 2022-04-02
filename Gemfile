@@ -17,7 +17,6 @@ gem "tailwindcss-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
