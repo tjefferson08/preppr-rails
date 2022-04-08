@@ -1,10 +1,5 @@
-<div class="p-8">
-  <%= form_with(method: "GET", class: "contents") do |form| %>
-    <%= form.label :recipe_search, "Recipe search:" %>
-    <%= form.text_field :recipe_search, value: params[:recipe_search] %>
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", value: "Search" %>
-  <% end %>
-</div>
+<%= form_with(method: :get, class: "contents", html: {id: "search_form"}, authenticity_token: false) do %>
+<% end %>
 
 <%= form_with(model: meal_plan, class: "contents") do |form| %>
   <% if meal_plan.errors.any? %>
@@ -19,15 +14,40 @@
     </div>
   <% end %>
 
+  <div class="grid grid-cols-2 gap-x-8">
+    <div>
+      <%= label_tag :recipe_search, "Recipe search:", form: "search_form" %>
+      <%= search_field_tag :recipe_search, params[:recipe_search], form: "search_form" %>
+
+      <ul>
+        <% @recipes.each do |recipe| %>
+          <li>
+            <%= label_tag "add_recipe_#{recipe.id}", class: "flex justify-between" do %>
+              <span class="py-2 px-4"><%= recipe.name %></span>
+              <%= button_tag "Add", type: "submit", id: "add_recipe_#{recipe.id}", name: "add_recipe_id", value: recipe.id, class: "max-h-12 mt-2 rounded-lg py-3 px-5 text-white bg-green-400 font-medium" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div>
+      <%= label_tag :meal_plan_search, "Meal plan search:", form: "search_form" %>
+      <%= search_field_tag :meal_plan_search, params[:meal_plan_search], form: "search_form" %>
+
+      <ul>
+        <% @meal_plan.recipes.each do |recipe| %>
+          <li>
+            <%= label_tag "remove_recipe_#{recipe.id}", class: "flex justify-between" do %>
+              <span class="py-2 px-4"><%= recipe.name %></span>
+              <%= button_tag "Remove", type: "submit", id: "remove_recipe_#{recipe.id}", name: "remove_recipe_id", value: recipe.id, class: "max-h-12 mt-2 rounded-lg py-3 px-5 text-white bg-green-400 font-medium" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <%= submit_tag "Search", form: "search_form", class: "hidden" %>
+  </div>
+
   <div class="inline">
-    <ul>
-      <% @recipes.each do |recipe| %>
-        <li>
-          <%= form.check_box :recipe_ids, {multiple: true}, recipe.id, nil %>
-          <%= form.label :recipe_ids, recipe.name, value: recipe.id %>
-        </li>
-      <% end %>
-    </ul>
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

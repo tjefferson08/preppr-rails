@@ -18,14 +18,18 @@ class MealPlansController < ApplicationController
 
   # GET /meal_plans/1/edit
   def edit
+    @recipes = Recipe.where("lower(name) LIKE ?", "%#{params[:recipe_search].to_s.downcase}%")
+      .reject { |r| @meal_plan.recipes.include? r }
   end
 
   # POST /meal_plans
   def create
     @meal_plan = MealPlan.new(meal_plan_params.merge(state: "draft", owner_id: current_account.key))
+    @meal_plan.recipe_ids += [params[:add_recipe_id].to_i] if params[:add_recipe_id].present?
+    @meal_plan.recipe_ids -= [params[:remove_recipe_id].to_i] if params[:remove_recipe_id].present?
 
     if @meal_plan.save
-      redirect_to @meal_plan, notice: "Meal plan was successfully created."
+      redirect_to edit_meal_plan_path(@meal_plan), notice: "Meal plan was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,8 +37,11 @@ class MealPlansController < ApplicationController
 
   # PATCH/PUT /meal_plans/1
   def update
+    @meal_plan.recipe_ids += [params[:add_recipe_id].to_i] if params[:add_recipe_id].present?
+    @meal_plan.recipe_ids -= [params[:remove_recipe_id].to_i] if params[:remove_recipe_id].present?
+
     if @meal_plan.update(meal_plan_params)
-      redirect_to @meal_plan, notice: "Meal plan was successfully updated."
+      redirect_to edit_meal_plan_path(@meal_plan), notice: "Meal plan was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
