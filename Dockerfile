@@ -3,7 +3,6 @@ ARG RUBY_VERSION=2.7.3
 ARG VARIANT=jemalloc-slim
 FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
 
-ARG NODE_VERSION=16
 ARG BUNDLER_VERSION=2.3.9
 
 ARG RAILS_ENV=production
@@ -23,13 +22,7 @@ RUN mkdir -p tmp/pids
 
 SHELL ["/bin/bash", "-c"]
 
-RUN curl https://get.volta.sh | bash
-
 ENV BASH_ENV ~/.bashrc
-ENV VOLTA_HOME /root/.volta
-ENV PATH $VOLTA_HOME/bin:/usr/local/bin:$PATH
-
-RUN volta install node@${NODE_VERSION} && volta install yarn
 
 FROM base as build_deps
 
@@ -49,19 +42,6 @@ RUN gem install -N bundler -v ${BUNDLER_VERSION}
 COPY Gemfile* ./
 RUN bundle install &&  rm -rf vendor/bundle/ruby/*/cache
 
-FROM build_deps as node_modules
-
-COPY package*json ./
-COPY yarn.* ./
-
-RUN if [ -f "yarn.lock" ]; then \
-    yarn install; \
-    elif [ -f "package-lock.json" ]; then \
-    npm install; \
-    else \
-    mkdir node_modules; \
-    fi
-
 FROM base
 
 ARG PROD_PACKAGES="postgresql-client file vim curl gzip libsqlite3-0"
@@ -75,7 +55,6 @@ RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 COPY --from=gems /app /app
-COPY --from=node_modules /app/node_modules /app/node_modules
 
 ENV SECRET_KEY_BASE 1
 
