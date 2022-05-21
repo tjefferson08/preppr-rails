@@ -90,6 +90,7 @@ GEM
       reline (>= 0.2.7)
     digest (3.1.0)
     erubi (1.10.0)
+    foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -129,6 +130,8 @@ GEM
       timeout
     nio4r (2.5.8)
     nokogiri (1.13.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     parallel (1.21.0)
     parser (3.1.1.0)
@@ -212,6 +215,8 @@ GEM
     strscan (3.0.1)
     tailwindcss-rails (2.0.7-x86_64-darwin)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.7-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
     turbo-rails (1.0.1)
@@ -238,11 +243,13 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
   capybara
   debug
+  foreman
   importmap-rails
   nokogiri (~> 1.13)
   puma (~> 5.0)
@@ -251,7 +258,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
-  standardrb (~> 1.0)
+  standardrb
   stimulus-rails
   tailwindcss-rails
   turbo-rails
@@ -260,7 +267,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.1p18
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.7
