@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+if ! gem list foreman -i --silent; then
+  raise "Bundle install to grab foreman"
+fi
+
+exec bin/foreman start -f Procfile.dev "$@"
