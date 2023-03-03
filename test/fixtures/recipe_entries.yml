@@ -1,0 +1,4 @@
+active_for_bob_beans:
+  recipe: beans_and_rice
+  meal_plan: active_for_bob
+  scale: 2

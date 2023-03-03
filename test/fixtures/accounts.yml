@@ -2,3 +2,4 @@ bob:
   email: bob@builder.com
   name: Bob
   password_digest: <%= BCrypt::Password.create('password', cost: 1) %>
+  active_meal_plan: active_for_bob

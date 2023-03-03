@@ -15,9 +15,40 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_03_165153) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.integer "active_meal_plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["active_meal_plan_id"], name: "index_accounts_on_active_meal_plan_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
   end
 
+  create_table "meal_plans", force: :cascade do |t|
+    t.integer "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_meal_plans_on_account_id"
+  end
+
+  create_table "recipe_entries", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "meal_plan_id", null: false
+    t.integer "scale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_plan_id"], name: "index_recipe_entries_on_meal_plan_id"
+    t.index ["recipe_id"], name: "index_recipe_entries_on_recipe_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "ingredients_list", null: false
+    t.text "instructions_list", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "accounts", "meal_plans", column: "active_meal_plan_id"
+  add_foreign_key "meal_plans", "accounts"
+  add_foreign_key "recipe_entries", "meal_plans"
+  add_foreign_key "recipe_entries", "recipes"
 end

@@ -1,0 +1,8 @@
+beans_and_rice:
+  title: Beans and Rice
+  ingredients_list:
+    - beans
+    - rice
+  instructions_list:
+    - make beans
+    - make rice
