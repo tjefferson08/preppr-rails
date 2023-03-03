@@ -17,6 +17,16 @@ class ApplicationLayout < ApplicationView
 			end
 
 			body do
+				div do
+				  if helpers.flash[:notice]
+					div { helpers.flash[:notice] }
+				  end
+
+				  if helpers.flash[:alert]
+					div { helpers.flash[:alert] }
+				  end
+				end
+
 				main(&block)
 			end
 		end
