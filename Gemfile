@@ -21,6 +21,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "annotate_models"
   gem "foreman"
   gem "web-console"
 end
