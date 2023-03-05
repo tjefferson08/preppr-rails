@@ -13,5 +13,6 @@ pkgs.mkShell {
     pkgs.ruby_3_1
     pkgs.sqlite
     pkgs.tzdata
+    pkgs.flyctl
   ];
 }
