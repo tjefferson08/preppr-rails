@@ -7,6 +7,18 @@ beans_and_rice:
     - make beans
     - make rice
 
+mac_n_cheese:
+  title: Macaroni and Cheese
+  ingredients_list:
+    - 1 box kraft mac n cheese
+    - 1/4 cup milk
+  instructions_list:
+    - boil water
+    - cook noodles 8 minutes
+    - drain noodles
+    - add cheese flavor powder and milk
+    - stir
+
 #------------------------------------------------------------------------------
 # Recipe
 #

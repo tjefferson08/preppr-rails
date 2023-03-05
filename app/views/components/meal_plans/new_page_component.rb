@@ -22,8 +22,15 @@ class MealPlans::NewPageComponent < ApplicationComponent
       7.times do
         div do
           fields_for "recipe_entry[]", RecipeEntry.new do |fields|
-            fields.select :scale, (1...5).map { |i| [i, i] }, include_blank: true
-            fields.collection_select :recipe_id,  @recipes, :id, :title, prompt: true
+            fields.label :scale do
+              span { "Scale" }
+              fields.select :scale, (1...5).map { |i| [i, i] }, include_blank: true
+            end
+
+            fields.label :recipe_id do
+              span { "Recipe" }
+              fields.collection_select :recipe_id,  @recipes, :id, :title, prompt: true
+            end
           end
         end
       end

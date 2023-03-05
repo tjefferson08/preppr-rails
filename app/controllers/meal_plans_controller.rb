@@ -13,7 +13,6 @@ class MealPlansController < ApplicationController
 
   def new
     recipes = Recipe.all
-    debugger
     render MealPlans::NewPageComponent.new(active_meal_plan: current_account.active_meal_plan, recipes: recipes)
   end
 
@@ -27,6 +26,7 @@ class MealPlansController < ApplicationController
     MealPlan.transaction do
       meal_plan.save!
       meal_plan.recipe_entries.create!(recipe_entries_params)
+      current_account.update!(active_meal_plan: meal_plan)
     end
 
     redirect_to meal_plans_path(meal_plan), status: :see_other
