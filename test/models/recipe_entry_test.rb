@@ -19,14 +19,16 @@
 #  meal_plan_id  (meal_plan_id => meal_plans.id)
 #  recipe_id     (recipe_id => recipes.id)
 #
-class RecipeEntry < ApplicationRecord
-  belongs_to :meal_plan
-  belongs_to :recipe
+require 'test_helper'
 
-  attribute :scale, default: -> { 1 }
+class RecipeEntryTest < ActiveSupport::TestCase
+  def test_ingredients_list_is_scaled
+    r = recipes(:mac_n_cheese)
+    re = RecipeEntry.new(scale: 3, recipe: r)
 
-  def scaled_ingredients_list
-    return unless recipe
-    recipe.ingredients_list.map { |ing| ing.merge(quantity: ing[:quantity] * scale) }
+    actual_ingredients = re.scaled_ingredients_list
+
+    assert_equal [3, "box", "macaroni and cheese"], actual_ingredients[0].values_at(:quantity, :unit, :name)
+    assert_equal [0.75, "cup", "milk"], actual_ingredients[1].values_at(:quantity, :unit, :name)
   end
 end

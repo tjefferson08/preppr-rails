@@ -18,13 +18,24 @@ class MealPlansTest < ApplicationSystemTestCase
 
     click_link "New Meal Plan"
     recipe_selects = find_all(:select, "Recipe")
+    scale_selects = find_all(:select, "Scale")
 
     recipe_selects[0].select "Beans and Rice"
-    recipe_selects[1].select "Macaroni and Cheese"
+    scale_selects[0].select "1"
 
-    accept_confirm { click_button "Save" }
+    recipe_selects[1].select "Macaroni and Cheese"
+    scale_selects[1].select "3"
+
+    assert_changes -> { MealPlan.count }, 1 do
+      assert_changes -> { GroceryList.count }, 1 do
+        accept_confirm { click_button "Save" }
+      end
+    end
 
     assert_text "Beans and Rice"
     assert_text "Macaroni and Cheese"
+
+    assert_text "black beans, 1, cup"
+    assert_text "macaroni and cheese, 3, box"
   end
 end
