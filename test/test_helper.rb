@@ -5,7 +5,7 @@ require "rails/test_help"
 require "capybara/cuprite"
 Capybara.javascript_driver = :my_cuprite
 Capybara.register_driver(:my_cuprite) do |app|
-  Capybara::Cuprite::Driver.new(app, window_size: [1200, 800], inspector: true)
+  Capybara::Cuprite::Driver.new(app, window_size: [1200, 800], inspector: true, headless: true)
 end
 
 class ActiveSupport::TestCase
