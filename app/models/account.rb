@@ -1,20 +1,24 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id              :integer          not null, primary key
+#  email           :string           not null
+#  name            :string           not null
+#  password_digest :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  household_id    :integer
+#
+# Indexes
+#
+#  index_accounts_on_email         (email) UNIQUE
+#  index_accounts_on_household_id  (household_id)
+#
 class Account < ApplicationRecord
-  belongs_to :active_meal_plan, class_name: "MealPlan", foreign_key: :active_meal_plan_id, optional: true
+  belongs_to :household
 
   has_secure_password
-end
 
-#------------------------------------------------------------------------------
-# Account
-#
-# Name                SQL Type             Null    Primary Default
-# ------------------- -------------------- ------- ------- ----------
-# id                  INTEGER              false   true              
-# name                varchar              false   false             
-# email               varchar              false   false             
-# password_digest     varchar              false   false             
-# active_meal_plan_id INTEGER              true    false             
-# created_at          datetime(6)          false   false             
-# updated_at          datetime(6)          false   false             
-#
-#------------------------------------------------------------------------------
+  delegate :active_meal_plan, :active_grocery_list, to: :household
+end

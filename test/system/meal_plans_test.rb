@@ -2,11 +2,13 @@ require "application_system_test_case"
 
 class MealPlansTest < ApplicationSystemTestCase
   test "allow me to input my meal plan" do
+    account = accounts(:bob)
+    assert_not_nil account.active_meal_plan
+
     visit meal_plans_url
 
     assert_text "Sign in"
 
-    account = accounts(:bob)
     fill_in "Email", with: account.email
     fill_in "Password", with: "password"
     click_button "Sign in"

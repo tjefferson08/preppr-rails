@@ -21,12 +21,13 @@ class MealPlansController < ApplicationController
       return render MealPlans::NewPageComponent.new(errors: ["You must select at least one recipe"], recipes: Recipe.all), status: :unprocessable_entity
     end
 
-    meal_plan = MealPlan.new(account: current_account)
+    household = current_account.household
+    meal_plan = MealPlan.new(household: household)
 
     MealPlan.transaction do
       meal_plan.save!
       meal_plan.recipe_entries.create!(recipe_entries_params)
-      current_account.update!(active_meal_plan: meal_plan)
+      household.update!(active_meal_plan: meal_plan)
     end
 
     redirect_to meal_plans_path(meal_plan), status: :see_other
