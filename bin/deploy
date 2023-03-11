@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+if !system("which -s flyctl")
+  abort("\nInstall flyctl CLI tool to deploy")
+end
+
+migrate_cmd = %q[flyctl ssh console -C "/bin/bash -c 'cd app && bin/rails db:migrate'"]
+if !system(migrate_cmd)
+  abort("unable to migrate DB with one-off command:\n#{migrate_cmd}\n")
+end
+
+deploy_cmd = "flyctl deploy --remote-only"
+if !system(deploy_cmd)
+  abort("unable to deploy with fly command:\n#{deploy_cmd}\n")
+end
