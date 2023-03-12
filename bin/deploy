@@ -13,3 +13,8 @@ deploy_cmd = "flyctl deploy --remote-only"
 if !system(deploy_cmd)
   abort("unable to deploy with fly command:\n#{deploy_cmd}\n")
 end
+
+seed_cmd = %q[flyctl ssh console -C "/bin/bash -c 'cd app && bin/rails runner CreateRecipesJob.perform_now'"]
+if !system(seed_cmd)
+  abort("unable to deploy with fly command:\n#{seed_cmd}\n")
+end
