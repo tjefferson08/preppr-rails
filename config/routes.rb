@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resource :meal_plans, only: [:show, :new, :create]
-  resource :grocery_lists, only: [:show]
+  resource :grocery_lists, only: [:show, :update]
 
   get "sign_in" => "sessions#new"
   post "sign_in" => "sessions#create"

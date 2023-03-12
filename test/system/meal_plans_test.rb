@@ -35,7 +35,20 @@ class MealPlansTest < ApplicationSystemTestCase
     assert_text "Beans and Rice"
     assert_text "Macaroni and Cheese"
 
+    visit grocery_lists_url
+
     assert_text "black beans, 1, cup"
+    assert_text "macaroni and cheese, 3, box"
+
+    click_button "Remove", match: :first
+
+    assert_no_text "black beans, 1, cup"
+    assert_text "white rice, 1, cup"
+    assert_text "macaroni and cheese, 3, box"
+
+    click_button "Remove", match: :first
+    assert_no_text "black beans, 1, cup"
+    assert_no_text "white rice, 1, cup"
     assert_text "macaroni and cheese, 3, box"
   end
 end

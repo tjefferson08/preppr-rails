@@ -12,7 +12,10 @@ class CreateRecipesJob < ApplicationJob
     {
       title: "Stir Fry",
       ingredients_list: [
-        {text: "3 medium sweet potatoes", quantity: 1, unit: "each", name: "3 medium sweet potatoes"}, {text: "1 red pepper", quantity: 1, unit: "each", name: "1 red pepper"}, {text: "1.5 cups chopped carrot", quantity: 1, unit: "each", name: "1.5 cups chopped carrot"}, {text: "4 cups broccoli florets", quantity: 1, unit: "each", name: "4 cups broccoli florets"}
+        {text: "3 medium sweet potatoes", quantity: 1, unit: "each", name: "3 medium sweet potatoes"},
+        {text: "1 red pepper", quantity: 1, unit: "each", name: "1 red pepper"},
+        {text: "1.5 cups chopped carrot", quantity: 1, unit: "each", name: "1.5 cups chopped carrot"},
+        {text: "4 cups broccoli florets", quantity: 1, unit: "each", name: "4 cups broccoli florets"}
       ],
       instructions_list: ['Bake salmon @ 400f for 20 minutes', 'Roast asparagus', 'boil funio 5 for mins']
     },
@@ -54,7 +57,69 @@ class CreateRecipesJob < ApplicationJob
         { text: "eggs", quantity: 4, unit: "each", name: "eggs" },
       ],
       instructions_list: ["cook potatoes first", "add onion", "cook eggs separately, then combine"]
-    }
+    },
+    {
+      title: "Eggs, Beans, Kale",
+      ingredients_list: [
+        { text: "4 eggs", quantity: 4, unit: "each", name: "eggs" },
+        { text: "1 can great northern beans", quantity: 1, unit: "can", name: "great northern beans" },
+        { text: "6 cups chopped kale", quantity: 6, unit: "cup", name: "kale" },
+      ],
+      instructions_list: ["saute kale", "simmer beans", "cook eggs separately"]
+    },
+    {
+      title: "All Good Stuff soup",
+      ingredients_list: [
+        {text: "1.5 cups chopped carrot", quantity: 1.5, unit: "cup", name: "carrot"},
+        {text: "1.5 cups lentil rotini", quantity: 1.5, unit: "cup", name: "1.5 cups lentil rotini"},
+        {text: "1.5 cups chopped celery", quantity: 1.5, unit: "cup", name: "celery"},
+        {text: "1 medium yellow onion, diced", quantity: 1, unit: "each", name: "yellow onion"},
+        {text: "2 cans chickpeas", quantity: 2, unit: "can", name: "chickpeas"},
+        {text: "1 box vegetable broth", quantity: 32, unit: 'fl oz', name: "vegetable broth" },
+        {text: "cumin", quantity: 1, unit: 'tbsp', name: "cumin" },
+        {text: "italian seasoning", quantity: 1, unit: 'tbsp', name: "italian seasoning" },
+      ],
+      instructions_list: ["saute kale", "simmer beans", "cook eggs separately"]
+    },
+    {
+      title: "Black bean",
+      ingredients_list: [
+        {text: "beans", quantity: 1, unit: 'lbs', name: "beans"},
+        {text: "2 poblano peppers", quantity: 1.5, unit: "cup", name: "poblano pepper"},
+        {text: "1 medium yellow onion, sliced", quantity: 1.5, unit: "cup", name: "yellow onion"},
+        {text: "2 cans black beans", quantity: 1, unit: "each", name: "black beans"},
+        {text: "cumin", quantity: 1, unit: 'tsp', name: "cumin"},
+        {text: "chili powder", quantity: 1, unit: 'tbsp', name: "chili powder"},
+      ],
+      instructions_list: ["saute kale", "simmer beans", "cook eggs separately"]
+    },
+    {
+      title: "The usuals",
+      ingredients_list: [
+        {text: "eggs", quantity: 3, unit: "dozen", name: "eggs"},
+        {text: "spindrift seltzer", quantity: 3, unit: "case", name: "seltzer"},
+        {text: "apples", quantity: 1, unit: "each", name: "apples"},
+        {text: "bananas", quantity: 1, unit: "each", name: "bananas"},
+        {text: "pickles", quantity: 1, unit: "jar", name: "pickles"},
+        {text: "hummus", quantity: 8, unit: "oz", name: "hummus"},
+        {text: "organic 2% milk", quantity: 64, unit: "oz", name: "milk"},
+        {text: "organic almond milk", quantity: 32, unit: "oz", name: "almond milk"},
+        {text: "organic oat milk", quantity: 32, unit: "oz", name: "oat milk"},
+        {text: "chipssss", quantity: 1, unit: "bag", name: "potato chips"},
+        {text: "cottage cheese", quantity: 1, unit: "quart", name: "cottage cheese"},
+        {text: "roasted almonds", quantity: 16, unit: "oz", name: "roasted almonds"},
+        {text: "2 sweet potatoes for emergency fries", quantity: 2, unit: "each", name: "sweet potatoes"},
+      ],
+      instructions_list: ["buy the stuff"]
+    },
+    # {
+    #   title: "Assorted Spices",
+    #   ingredients_list: [
+    #     {text: "cumin", quantity: 1, unit: 'tsp', name: "cumin"},
+    #     {text: "chili powder", quantity: 1, unit: 'tbsp', name: "chili powder"},
+    #     {text: "italian seasoning", quantity: 1, unit: 'tbsp', name: "italian seasoning"},
+    #   ]
+    # }
   ]
 
   def perform
