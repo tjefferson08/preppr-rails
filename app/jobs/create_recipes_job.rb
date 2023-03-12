@@ -62,8 +62,9 @@ class CreateRecipesJob < ApplicationJob
       title: "Eggs, Beans, Kale",
       ingredients_list: [
         { text: "4 eggs", quantity: 4, unit: "each", name: "eggs" },
-        { text: "1 can great northern beans", quantity: 1, unit: "can", name: "great northern beans" },
+        { text: "2 can great northern beans", quantity: 2, unit: "can", name: "great northern beans" },
         { text: "6 cups chopped kale", quantity: 6, unit: "cup", name: "kale" },
+        { text: "1 medium lemon, juiced", quantity: 1, unit: "each", name: "lemon" },
       ],
       instructions_list: ["saute kale", "simmer beans", "cook eggs separately"]
     },
