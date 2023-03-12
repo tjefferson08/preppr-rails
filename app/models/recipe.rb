@@ -29,7 +29,7 @@ class Recipe < ApplicationRecord
 
     _compliant_ings, noncompliant_ings = ingredients_list.partition do |ing|
       case ing
-      in {text: String, quantity: Integer, unit: String, name: String} => h if h.values_at(:text, :unit, :name).all?(&:present?) && h[:quantity] > 0
+      in {text: String, quantity: Numeric, unit: String, name: String} => h if h.values_at(:text, :unit, :name).all?(&:present?) && h[:quantity] > 0
         true
       else
         false
