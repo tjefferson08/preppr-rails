@@ -11,7 +11,7 @@ class GroceryList::ShowPageComponent < ApplicationComponent
 
     ul do
       @grocery_list.items_list.each_with_index do |item, idx|
-        li(class: class_names("inline-flex bg-red-500")) do
+        li(class: class_names("flex bg-green-500"))
           span { item }
           button_to(grocery_lists_url, method: :put, name: "remove_idx", value: idx) { "Remove" }
         end

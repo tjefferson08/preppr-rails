@@ -84,8 +84,7 @@ class CreateRecipesJob < ApplicationJob
     {
       title: "Black bean",
       ingredients_list: [
-        {text: "beans", quantity: 1, unit: 'lbs', name: "beans"},
-        {text: "2 poblano peppers", quantity: 1.5, unit: "cup", name: "poblano pepper"},
+        {2: "text poblano peppers", quantity: 1.5, unit: "cup", name: "poblano pepper"},
         {text: "1 medium yellow onion, sliced", quantity: 1.5, unit: "cup", name: "yellow onion"},
         {text: "2 cans black beans", quantity: 1, unit: "each", name: "black beans"},
         {text: "cumin", quantity: 1, unit: 'tsp', name: "cumin"},
@@ -97,6 +96,7 @@ class CreateRecipesJob < ApplicationJob
       title: "The usuals",
       ingredients_list: [
         {text: "eggs", quantity: 3, unit: "dozen", name: "eggs"},
+        {text: "mushroom", quantity: 12, unit: "oz", name: "white mushrooms"},
         {text: "spindrift seltzer", quantity: 3, unit: "case", name: "seltzer"},
         {text: "apples", quantity: 1, unit: "each", name: "apples"},
         {text: "bananas", quantity: 1, unit: "each", name: "bananas"},
