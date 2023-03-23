@@ -85,9 +85,9 @@ class CreateRecipesJob < ApplicationJob
     {
       title: "Black bean",
       ingredients_list: [
-        {2: "text poblano peppers", quantity: 1.5, unit: "cup", name: "poblano pepper"},
+        {text: "2 poblano peppers", quantity: 1.5, unit: "cup", name: "poblano pepper"},
         {text: "1 medium yellow onion, sliced", quantity: 1.5, unit: "cup", name: "yellow onion"},
-        {text: "2 cans black beans", quantity: 1, unit: "each", name: "black beans"},
+        {text: "2 cans black beans", quantity: 30, unit: "oz", name: "black beans"},
         {text: "cumin", quantity: 1, unit: 'tsp', name: "cumin"},
         {text: "chili powder", quantity: 1, unit: 'tbsp', name: "chili powder"},
       ],
@@ -113,6 +113,49 @@ class CreateRecipesJob < ApplicationJob
       ],
       instructions_list: ["buy the stuff"]
     },
+    {
+      title: "Egg Salad",
+      ingredients_list: [
+        {text: "eggs", quantity: 4, unit: "each", name: "eggs"},
+        {text: "1.5 cups chopped celery", quantity: 1.5, unit: "cup", name: "celery"},
+        {text: "1/2 cup sir kensington mayo", quantity: 0.5, unit: "cup", name: "vegan mayonnaise"},
+        {text: "4 slices of bread", quantity: 4, unit: "each", name: "bread slices"},
+        {text: "4 pickle spears", quantity: 4, unit: "each", name: "dill pickle spears"},
+      ],
+      instructions_list: [
+        "hardboil eggs",
+        "chop celery",
+        "combine in large bowl"
+      ]
+    },
+    {
+      title: "Shredded Chicken Tacos",
+      ingredients_list: [
+        {text: "2 pounds chicken breasts", quantity: 2, unit: 'lbs', name: "chicken breast"},
+        {text: "1 jar salsa", quantity: 12, unit: 'fl oz', name: "salsa"},
+        {text: "1 medium yellow onion, chopped", quantity: 1, unit: 'each', name: "yellow onion"},
+        {text: "4 clove garlic, diced", quantity: 4, unit: 'each', name: "garlic clove"},
+        {text: "2 avocados", quantity: 2, unit: 'each', name: "avocado"},
+      ],
+      instructions_list: [
+        "chuck everything in slow cooker and cook for 8 hours on low"
+      ]
+    },
+    {
+      title: "Chicken Tortilla Soup",
+      ingredients_list: [
+        {text: "2 pounds chicken breasts", quantity: 2, unit: 'lbs', name: "chicken breast"},
+        {text: "1 medium yellow onion, chopped", quantity: 1, unit: 'each', name: "yellow onion"},
+        {text: "4 clove garlic, diced", quantity: 4, unit: 'each', name: "garlic clove"},
+        {text: "2 avocados", quantity: 2, unit: 'each', name: "avocado"},
+        {text: "1 box veggie broth", quantity: 32, unit: 'fl oz', name: "vegetable broth"},
+        {text: "2 oz cilantro", quantity: 2, unit: 'oz', name: "cilantro"},
+      ],
+      instructions_list: [
+        "sautee onion",
+        "add everything else"
+      ]
+    }
     # {
     #   title: "Assorted Spices",
     #   ingredients_list: [
