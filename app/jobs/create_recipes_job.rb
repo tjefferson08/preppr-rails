@@ -142,6 +142,17 @@ class CreateRecipesJob < ApplicationJob
       ]
     },
     {
+      title: "Bean & Egg Tacos",
+      ingredients_list: [
+        {text: "6 eggs", quantity: 6, unit: "each", name: "eggs" },
+        {text: "1 can refried black beans", quantity: 1, unit: "can", name: "refried black beans" },
+        {text: "1 avocados", quantity: 1, unit: 'each', name: "avocado"},
+      ],
+      instructions_list: [
+        "make tacos"
+      ]
+    },
+    {
       title: "Chicken Tortilla Soup",
       ingredients_list: [
         {text: "2 pounds chicken breasts", quantity: 2, unit: 'lbs', name: "chicken breast"},
